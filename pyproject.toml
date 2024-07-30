@@ -1,0 +1,10 @@
+[project]
+name = "isic2024"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "WHO777", email = "ziv.ziv.29@gmail.com"},
+]
+dependencies = []
+requires-python = "==3.8.*"
+readme = "README.md"
