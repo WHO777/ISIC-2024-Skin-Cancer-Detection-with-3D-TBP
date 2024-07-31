@@ -5,6 +5,17 @@ description = "Default template for PDM package"
 authors = [
     {name = "WHO777", email = "ziv.ziv.29@gmail.com"},
 ]
-dependencies = []
+dependencies = [
+    "clearml>=1.16.2",
+    "clearml-agent>=1.8.1",
+    "setuptools>=72.1.0",
+]
 requires-python = "==3.8.*"
 readme = "README.md"
+
+[project.optional-dependencies]
+kaggle = [
+    "kaggle>=1.6.17",
+]
+
+[tool.pdm]
