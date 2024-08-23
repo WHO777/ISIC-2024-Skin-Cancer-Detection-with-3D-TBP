@@ -1,0 +1,51 @@
+defaults:
+  - _self_
+  - data: base_data_config
+  - model: efficientvit_l2_r384_in1k
+
+seed: 43
+output_dir: ''
+run_name: ''
+
+clearML:
+  enable: False
+  project_name: 'ISIC2024'
+  task_name: ${run_name}
+
+loss:
+  type: BCELoss
+
+optimizer:
+  type: Adam
+  params:
+    lr: 1.0e-5
+    weight_decay: 1.0e-6
+  scheduler:
+    type: CosineAnnealingLR
+    params:
+      T_max: 500
+      eta_min: 1.0e-10
+
+metrics:
+  - type: PartialAUC
+    params:
+      min_tpr: 0.8
+  - type: PartialAUC
+    params:
+      min_tpr: 0.0
+    name: 'AUC'
+
+callbacks:
+  - type: ModelCheckpoint
+    params:
+      dirpath: '${output_dir}/weights'
+      filename: 'checkpoint'
+      monitor: 'val_PartialAUC'
+      mode: max
+  - type: LearningRateMonitor
+
+loggers:
+  - type: TensorBoardLogger
+    params:
+      save_dir: ${output_dir}
+      name: 'tensorboard'

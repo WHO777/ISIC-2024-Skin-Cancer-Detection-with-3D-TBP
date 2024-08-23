@@ -1,0 +1,7 @@
+isic2018_local:
+  type: 'ISIC2024Dataset'
+  params:
+    root_path: ${oc.env:ISIC2024_PROJECT_PATH}/data/raw/isic2018
+    pos_neg_ratio: 0.2
+    n_folds: 5
+    fold: 0

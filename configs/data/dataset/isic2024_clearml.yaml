@@ -1,0 +1,9 @@
+isic2024_local:
+  type: 'ClearMLDataset'
+  params:
+    project: ${clearML.project_name}
+    name: 'isic2024_dataset'
+    version: 1.0.0
+    pos_neg_ratio: 0.2
+    n_folds: 5
+    fold: 0
